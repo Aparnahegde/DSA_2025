@@ -1,5 +1,8 @@
 class Solution {
     public boolean isPalindrome(int x) {
+        if(x<0){
+            return false;
+        }
         int temp=x;
         int pal=0;
         while(temp>0){
@@ -7,10 +10,8 @@ class Solution {
             pal=pal*10+rem;
             temp/=10;
         }
-        if(pal==x){
-            return true;
-        }
+      
 
-        return false;
+        return pal==x;
     }
 }
