@@ -1,27 +1,5 @@
 class Solution {
     public int trap(int[] height) {
-        // int res=0;
-        // int tw=0;
-        // int sw=0;
-        // for(int i=1;i<height.length-1;i++){
-        //     int lb=height[i];
-        //     for(int j=0;j<i;j++){
-        //         if(height[j]>lb){
-        //             lb=height[j];
-        //         }
-        //     }
-        //     int rb=height[i];
-        //     for(int j=i+1;j<height.length;j++){
-        //         if(height[j]>rb){
-        //             rb=height[j];
-        //         }
-        //     }
-        //     tw=Math.min(lb,rb);
-        //     sw=tw-height[i];
-        //     res+=sw;
-        // }
-        // return res;
-
         int res=0;
         int n=height.length;
         int[] lb=new int[n];
@@ -39,13 +17,6 @@ class Solution {
         }
 
         return res;
-
-
-
-
-
-
-
 
     }
 }
