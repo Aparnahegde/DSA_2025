@@ -1,13 +1,21 @@
 class Solution {
     public boolean hasAllCodes(String s, int k) {
-        Set<String> codes = new HashSet<>();
-        int total = 1 << k;
-        
-        for (int i=0; i+k<=s.length(); i++) {
-            codes.add(s.substring(i, i+k));
-            if (codes.size() == total) return true;
+
+        Set<String> seen = new HashSet<>();
+
+        int required = 1 << k;
+
+        for (int i = 0; i <= s.length() - k; i++) {
+
+            String sub = s.substring(i, i + k);
+
+            seen.add(sub);
+
+            if (seen.size() == required) {
+                return true;
+            }
         }
-        
+
         return false;
     }
 }
