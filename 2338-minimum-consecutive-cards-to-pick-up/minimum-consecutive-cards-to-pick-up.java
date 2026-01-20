@@ -1,14 +1,19 @@
 class Solution {
     public int minimumCardPickup(int[] cards) {
+        Map<Integer, Integer> freq = new HashMap<>();
+        int left = 0;
         int res = Integer.MAX_VALUE;
-        HashMap<Integer, Integer> map = new HashMap();
-        for(int i = 0 ; i < cards.length ; i++){
-            if(map.containsKey(cards[i])){
-                res = Math.min(res, i - map.get(cards[i]) + 1);
+
+        for (int right = 0; right < cards.length; right++) {
+            freq.put(cards[right], freq.getOrDefault(cards[right], 0) + 1);
+
+            while (freq.get(cards[right]) > 1) {
+                res = Math.min(res, right - left + 1);
+                freq.put(cards[left], freq.get(cards[left]) - 1);
+                left++;
             }
-            map.put(cards[i], i);
         }
+
         return res == Integer.MAX_VALUE ? -1 : res;
-        
     }
 }
