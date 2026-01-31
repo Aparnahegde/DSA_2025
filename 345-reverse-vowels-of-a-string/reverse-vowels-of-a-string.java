@@ -1,26 +1,37 @@
 class Solution {
     public String reverseVowels(String s) {
-        String v="AEIOUaeiou";
-        int st=0;
-        int e=s.length()-1;
-        char[] arr=s.toCharArray();
-        while(st<e){
-            if(v.indexOf(arr[st]) != -1){
-                if(v.indexOf(arr[e]) != -1){
-                    char temp=arr[st];
-                    arr[st]=arr[e];
-                    arr[e]=temp;
-                    st++;
-                    e--;
-                }
-                else{
-                    e--;
-                }
+
+        // String containing all vowels
+        String vowels = "AEIOUaeiou";
+
+        // Convert string to char array
+        char[] arr = s.toCharArray();
+
+        int left = 0;
+        int right = arr.length - 1;
+
+        // Two-pointer approach
+        while (left < right) {
+
+            // If left is not a vowel, move forward
+            if (vowels.indexOf(arr[left]) == -1) {
+                left++;
             }
-            else{
-                st++;
+            // If right is not a vowel, move backward
+            else if (vowels.indexOf(arr[right]) == -1) {
+                right--;
+            }
+            // Both are vowels → swap
+            else {
+                char temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+
+                left++;
+                right--;
             }
         }
+
         return new String(arr);
     }
 }
