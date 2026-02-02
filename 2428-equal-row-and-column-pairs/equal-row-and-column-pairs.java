@@ -15,10 +15,10 @@ class Solution {
         int count = 0;
 
     
-        for (int j = 0; j < n; j++) {
+        for (int i = 0; i < n; i++) {
             List<Integer> col = new ArrayList<>();
-            for (int i = 0; i < n; i++) {
-                col.add(grid[i][j]);
+            for (int j = 0; j < n; j++) {
+                col.add(grid[j][i]);
             }
             count += map.getOrDefault(col, 0);
         }
