@@ -1,15 +1,37 @@
+// class Solution {
+//     public String removeStars(String s) {
+//         StringBuilder sb = new StringBuilder();
+
+//         for (char c : s.toCharArray()) {
+//             if (c == '*') {
+//                 sb.deleteCharAt(sb.length() - 1);
+//             } else {
+//                 sb.append(c);
+//             }
+//         }
+
+//         return sb.toString();
+//     }
+// }
+
 class Solution {
     public String removeStars(String s) {
-        StringBuilder sb = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
 
         for (char c : s.toCharArray()) {
             if (c == '*') {
-                sb.deleteCharAt(sb.length() - 1);
+                stack.pop();   // remove previous character
             } else {
-                sb.append(c);
+                stack.push(c);
             }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (char c : stack) {
+            sb.append(c);
         }
 
         return sb.toString();
     }
 }
+
